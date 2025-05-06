@@ -1,4 +1,4 @@
-module org.example.demo {
+module org.example.Pactica2JavaFX {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -13,6 +13,6 @@ module org.example.demo {
     requires static lombok;
     requires org.mariadb.jdbc;
 
-    opens org.example.demo to javafx.fxml;
-    exports org.example.demo;
+    opens org.example.Practica2JavaFX to javafx.fxml;
+    exports org.example.Practica2JavaFX;
 }

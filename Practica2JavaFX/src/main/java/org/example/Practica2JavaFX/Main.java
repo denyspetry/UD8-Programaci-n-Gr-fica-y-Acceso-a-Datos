@@ -1,5 +1,6 @@
-package org.example.demo;
+package org.example.Practica2JavaFX;
 
+import org.example.Practica2JavaFX.Estudiante;
 import org.mariadb.jdbc.Connection;
 import org.mariadb.jdbc.Statement;
 
@@ -7,6 +8,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
@@ -69,7 +71,7 @@ public class Main {
             while (respuesta.next()){ //recorremos todas las filas existentes en la tabla
                 int nia = respuesta.getInt("nia");
                 String nombre = respuesta.getString("nombre");
-                Date fecha_nacimiento = respuesta.getDate("fecha_nacimiento");
+                LocalDate fecha_nacimiento = respuesta.getDate("fecha_nacimiento").toLocalDate();
                 listaEstudiantes.add(new Estudiante(nia,nombre,fecha_nacimiento));
             }
 
