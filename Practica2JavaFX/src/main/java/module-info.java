@@ -1,4 +1,4 @@
-module org.example.Pactica2JavaFX {
+module org.example.practica2_javafx {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -11,8 +11,8 @@ module org.example.Pactica2JavaFX {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires static lombok;
-    requires org.mariadb.jdbc;
+    requires java.sql;
 
-    opens org.example.Practica2JavaFX to javafx.fxml;
-    exports org.example.Practica2JavaFX;
+    opens org.example.practica2_javafx to javafx.fxml;
+    exports org.example.practica2_javafx;
 }

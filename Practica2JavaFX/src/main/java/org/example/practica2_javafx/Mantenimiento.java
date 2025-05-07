@@ -1,4 +1,5 @@
-package org.example.Practica2JavaFX;
+package org.example.practica2_javafx;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -39,7 +40,7 @@ public class Mantenimiento {
     public static ObservableList<Estudiante> consultar(Connection conexion){
 
         ObservableList<Estudiante> listaEstudiantes = FXCollections.observableArrayList();
-        String query = "SELECT * FROM estudiante";
+        String query = "SELECT * FROM estudiantes";
 
         Statement stmt;
         ResultSet resultado;
@@ -67,26 +68,24 @@ public class Mantenimiento {
 
     public static void insertar(Connection conexion, Estudiante estudiante){
 
-        System.out.println("Insertando...");
-
         StringBuilder query = new StringBuilder();
-        query.append("INSERT INTO estudiantes (nia, nombre, fecha_nacimiento) VALUES ('");
-        query.append(estudiante.getNia());
-        query.append("', '");
-        query.append(estudiante.getNombre());
-        query.append("', '");
-        query.append(estudiante.getFecha_nacimiento());
-        query.append("')");
+
+        query.append("INSERT INTO estudiante (nia, nombre, fecha_nacimiento) VALUES ('");
+        query.append(estudiante.getNia() + "'");
+        query.append(", '" + estudiante.getNombre() + "'");
+        query.append(", '" + estudiante.getDate() + "')");
 
         Statement stmt;
 
         try {
             stmt = conexion.createStatement();
             stmt.executeUpdate(query.toString());
+            System.out.println("--- FILA INSERTADA ---");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
-
     }
+
+
 }
