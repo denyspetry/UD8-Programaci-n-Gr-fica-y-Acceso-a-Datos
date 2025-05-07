@@ -70,7 +70,7 @@ public class Mantenimiento {
 
         StringBuilder query = new StringBuilder();
 
-        query.append("INSERT INTO estudiante (nia, nombre, fecha_nacimiento) VALUES ('");
+        query.append("INSERT INTO estudiantes (nia, nombre, fecha_nacimiento) VALUES ('");
         query.append(estudiante.getNia() + "'");
         query.append(", '" + estudiante.getNombre() + "'");
         query.append(", '" + estudiante.getDate() + "')");
@@ -80,12 +80,42 @@ public class Mantenimiento {
         try {
             stmt = conexion.createStatement();
             stmt.executeUpdate(query.toString());
-            System.out.println("--- FILA INSERTADA ---");
+            System.out.println("Fila insertada.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
+    public static void modificar(Connection conexion, Estudiante estudiante, int nia_anterior){
 
+        String query = "UPDATE estudiantes SET nia = '" + estudiante.getNia() + "', nombre = '"
+                + estudiante.getNombre() + "', fecha_nacimiento = '" + estudiante.getDate() + "' WHERE nia = '" + nia_anterior + "'";
+
+        Statement stmt;
+
+        try {
+            stmt = conexion.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("Fila modificada.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void borrar (Connection conexion, Estudiante estudiante){
+        String query = "DELETE FROM estudiantes WHERE nia = '" + estudiante.getNia() + "'";
+
+        Statement stmt;
+
+        try {
+            stmt = conexion.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("Fila borrada.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
 }

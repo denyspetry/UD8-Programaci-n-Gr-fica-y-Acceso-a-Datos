@@ -50,7 +50,9 @@ public class HelloController {
     ObservableList<Estudiante> listaEstudiantes = FXCollections.observableArrayList();
 
     Connection bd;
-    //siempre el controlador tiene que initializarse
+
+    int nia_anterior;
+
     @FXML
     public void initialize(){
         bd = Mantenimiento.conectar();
@@ -85,11 +87,44 @@ public class HelloController {
         guardarButton.setDisable(false);
 
         Estudiante estudiante = tablaEstudiante.getSelectionModel().getSelectedItem();
+
+        nia_anterior = estudiante.getNia();
+
+        if (estudiante!= null){
+            niaTextField.setText(String.valueOf(estudiante.getNia()));
+            nombreTextField.setText(estudiante.getNombre());
+            datePicker.setValue(estudiante.getDate());
+        } else {
+            System.out.println("No hay ninguna fila seleccionada.");
+        }
     }
 
     public void onBorrarButton(ActionEvent actionEvent) {
+        Estudiante estudiante = tablaEstudiante.getSelectionModel().getSelectedItem();
+
+        if (estudiante != null){
+            Mantenimiento.borrar(bd, estudiante);
+        } else {
+            System.out.println("No hay ninguna fila seleccionada.");
+        }
     }
 
     public void onGuardarButton(ActionEvent actionEvent) {
+        addButton.setDisable(false);
+        guardarButton.setDisable(true);
+
+        int nia = Integer.parseInt(niaTextField.getText());
+        String nombre = nombreTextField.getText();
+        LocalDate fecha = datePicker.getValue();
+
+        Estudiante estudiante = new Estudiante(nia, nombre, fecha);
+
+        Mantenimiento.modificar(bd, estudiante, nia_anterior);
+
+        niaTextField.clear();
+        nombreTextField.clear();
+        datePicker.setValue(null);
+
+        tablaEstudiante.setItems(Mantenimiento.consultar(bd));
     }
 }
