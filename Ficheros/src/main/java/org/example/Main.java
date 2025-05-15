@@ -5,7 +5,13 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        File fichero = new File("src/main/resources/prueba.txt");
+        File fichero = new File("src/main/resources/ejemplo1.txt");
+
+        if(fichero.exists()){
+            System.out.println("El fichero " + fichero.getName() + " existe");
+        } else {
+            System.out.println("El fichero " + fichero.getName() + " no existe");
+        }
 
         try {
             fichero.createNewFile();
@@ -14,6 +20,7 @@ public class Main {
             e.printStackTrace();
         }
 
+        System.out.println("Nombre del fichero: " + fichero.getName());
         System.out.println("Tamaño del fichero: " + fichero.length());
         System.out.println("Ruta del fichero: " + fichero.getAbsolutePath());
 
@@ -27,12 +34,5 @@ public class Main {
             System.out.println("La carpeta " + carpeta.getName() + " no existe");
         }
 
-        fichero.delete();
-
-        if(fichero.exists()){
-            System.out.println(fichero.getName() + " existe");
-        } else {
-            System.out.println(fichero.getName() + " no existe");
-        }
     }
 }
