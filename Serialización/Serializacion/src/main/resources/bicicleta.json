@@ -1,0 +1,8 @@
+{
+  "marca": "ORBEA",
+  "modelo": "ABC",
+  "precio": 1000.0,
+  "corredores": [
+    "David, Mario, Patricia"
+  ]
+}
