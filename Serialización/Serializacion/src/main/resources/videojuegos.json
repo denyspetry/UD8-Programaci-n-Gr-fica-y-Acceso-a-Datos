@@ -1,0 +1,45 @@
+[
+  {
+    "nombre": "Minecraft",
+    "plataforma": "PC",
+    "precio": 19.99,
+    "disponible": true,
+    "listaGeneros": [
+      "Aventura",
+      "Construcción",
+      "Mundo abierto"
+    ]
+  },
+  {
+    "nombre": "Fortnite",
+    "plataforma": "PS5",
+    "precio": 0.0,
+    "disponible": true,
+    "listaGeneros": [
+      "Shooter",
+      "Construcción",
+      "Acción"
+    ]
+  },
+  {
+    "nombre": "FIFA 28",
+    "plataforma": "XBOX",
+    "precio": 69.69,
+    "disponible": true,
+    "listaGeneros": [
+      "Deporte",
+      "Multijugador",
+      "Fútbol"
+    ]
+  },
+  {
+    "nombre": "Cyberpunk 2077",
+    "plataforma": "Xbox",
+    "precio": 39.99,
+    "disponible": false,
+    "listaGeneros": [
+      "RPG",
+      "Acción"
+    ]
+  }
+]
